@@ -1,0 +1,15 @@
+name: TestPlugin2
+version: '1.0-SNAPSHOT'
+main: me.rooyrooy.testPlugin2.TestPlugin2
+api-version: '1.19'
+commands:
+  test:
+    aliases: [ t, testtest]
+    description: でばっぐ
+    permission: TestPlugin.test
+    permission-message: そんなけんりょくないやんけ
+    usage: /<command> <text> <text>
+  test2:
+    usage: /test2
+  shop:
+    usage: /shop

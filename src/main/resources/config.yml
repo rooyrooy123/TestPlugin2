@@ -1,0 +1,15 @@
+test_shop:
+  name: テストの所ppy
+  items:
+    stone:
+      amount: 32
+      price: 10
+    stone_sword:
+      amount: 1
+      price: 30
+    grass:
+      amount: 2
+      price: 2
+    dirt:
+      amount: 64
+      price: 1
