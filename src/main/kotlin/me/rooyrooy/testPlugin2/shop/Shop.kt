@@ -16,9 +16,11 @@ class Shop(
     private val id: String,
     config: ConfigurationSection
 ) {
+
     private val gui = PagedGui.items()
+
  init {
-     val itemsSection = config.getConfigurationSection("items") ?:throw NullPointerException()
+     val itemsSection = config.getConfigurationSection("${id}.items") ?:throw NullPointerException()
      val materials: MutableSet<String> = itemsSection.getKeys(false)
      val items = arrayListOf<ShopBuyButton>()
      val border = SimpleItem(ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setDisplayName(""))

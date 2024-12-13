@@ -24,12 +24,13 @@ class TestPlugin2 : JavaPlugin() {
     }
 
     override fun onCommand(sender: CommandSender, cmd: Command, label: String, args: Array<out String> ): Boolean {
-
+        println("test_console")
         if (cmd.name.equals("shop", ignoreCase = true)){ // #/shop items
+            val player = Bukkit.getPlayer(sender.name) ?: return false
+            player.sendMessage("TEST")
             if (args.size != 1) return false
             val id = args[0]
             sender.sendMessage("ID:${id}")
-            val player = Bukkit.getPlayer(sender.name) ?: return false
             Shop(id,config).open(player)
 
         }

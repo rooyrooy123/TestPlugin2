@@ -26,10 +26,8 @@ class ShopBuyButton(
 
     override fun handleClick(clickType: ClickType, player: Player, event: InventoryClickEvent) {
         if (canBuy(player)) {
-            player.inventory.addItem(ItemStack(item))
-            player.inventory.remove(
-                ItemStack(Material.AIR).apply { amount = price }
-            )
+
+            player.inventory.remove(ItemStack(money_item,price))
 
             player.playSound(player, "entity.villager.yes", 1f, 1f)
             player.sendMessage("§6§l§n購入しました!!!")
@@ -42,11 +40,9 @@ class ShopBuyButton(
     }
 
     private fun canBuy(player: Player): Boolean {
-        val sum = player.inventory
-            .filter { it.type == money_item }
-            .sumOf { it.amount }
-
-        return sum >= price
+        return player.inventory.contents
+            .filter { it?.type == money_item }
+            .sumOf { it?.amount ?: 0 } >= price
 
     }
 }
