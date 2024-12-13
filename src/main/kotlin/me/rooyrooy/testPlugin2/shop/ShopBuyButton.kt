@@ -11,7 +11,7 @@ import xyz.xenondevs.invui.item.builder.ItemBuilder
 import xyz.xenondevs.invui.item.impl.AbstractItem
 
 class ShopBuyButton(
-    private val item: Material,
+    private val item: Material, //Class内のfunでも変数使用可だよ
     private val amount: Int,
     private val price: Int,
 ) : AbstractItem() {
@@ -20,14 +20,16 @@ class ShopBuyButton(
         return ItemBuilder(item)
             .setAmount(amount)
             .addLoreLines("amount: $amount")
-            .addLoreLines("price: $amount")
+            .addLoreLines("price: $price")
 
     }
 
     override fun handleClick(clickType: ClickType, player: Player, event: InventoryClickEvent) {
         if (canBuy(player)) {
+            player.inventory.addItem(ItemStack(item))
 
-            player.inventory.remove(ItemStack(money_item,price))
+         //   player.inventory.remove(ItemStack(money_item,price))
+            player.inventory.removeItem(ItemStack(money_item,price))
 
             player.playSound(player, "entity.villager.yes", 1f, 1f)
             player.sendMessage("§6§l§n購入しました!!!")
