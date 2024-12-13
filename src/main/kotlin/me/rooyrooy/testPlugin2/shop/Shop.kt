@@ -20,19 +20,16 @@ class Shop(
     private val gui = PagedGui.items()
 
  init {
-     val itemsSection = config.getConfigurationSection("${id}.items") ?:throw NullPointerException()
+     val itemsSection = config.getConfigurationSection("${id}.items") ?:throw NullPointerException() //指定したIDのSHOPのITEMのSectionを取得 例外はnull
      val materials: MutableSet<String> = itemsSection.getKeys(false)
      val items = arrayListOf<ShopBuyButton>()
      val border = SimpleItem(ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setDisplayName(""))
 
      materials.forEach { materialString ->
-         val material = Material.valueOf(materialString.uppercase())
-         val amount = itemsSection.getInt("$materialString.amount", 0)
-         val price = itemsSection.getInt("$materialString.price", 0)
-
-         items.add(ShopBuyButton(material, amount, price))
-
-
+         val material = Material.valueOf(materialString.uppercase()) //大文字にしてMATERIAL認識させる
+         val amount = itemsSection.getInt("$materialString.amount", 0) // AMOUNT GET
+         val price = itemsSection.getInt("$materialString.price", 0) // PRICE GET
+         items.add(ShopBuyButton(material, amount, price)) //itemsにShpBuyButtonを追加
      }
      gui
          .setStructure(
@@ -54,7 +51,7 @@ class Shop(
 
         val window = Window.single()
             .setViewer(player)
-            .setTitle("§e§l§nShop§r §7(${id})")
+            .setTitle("§e§l§nShop§r §7§l§n(${id})")
             .setGui(gui)
             .build()
         window.open()

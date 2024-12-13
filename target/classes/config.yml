@@ -13,3 +13,17 @@ test_shop:
     dirt:
       amount: 64
       price: 1
+test_shop2:
+  items:
+    glass:
+      amount: 32
+      price: 10
+    diamond_sword:
+      amount: 1
+      price: 30
+    grass:
+      amount: 2
+      price: 2
+    iron_pickaxe:
+      amount: 64
+      price: 1
